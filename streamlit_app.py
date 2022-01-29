@@ -58,5 +58,10 @@ if tests_generated:
 	)
 
 	with st.expander("See HTML Code"):
+		st.download_button(
+			label='Download',
+			data=html_strings[0],
+			file_name=html_files[0]
+		)
 		st.code(html_strings[0])
 
