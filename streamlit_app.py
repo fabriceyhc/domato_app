@@ -32,5 +32,5 @@ for html_file in html_files:
         html_strings.append(soup.decode_contents())
 
 
-components.html(html_strings[0].decode_contents())
+components.html(html_strings[0])
 
