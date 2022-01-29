@@ -67,8 +67,8 @@ def main():
             height=500,
             scrolling=True
         )
-        st.button('Next', on_click=increment_counter)
-        st.button('Previous', on_click=decrement_counter)
+        st.button('Next', on_click=increment_html_file_num)
+        st.button('Previous', on_click=decrement_html_file_num)
 
         with st.expander("See HTML Code"):
             st.download_button(
