@@ -16,6 +16,7 @@ no_of_files = st.number_input(
 	value=10
 	)
 
+tests_generated = False
 if st.button(label='Generate Tests'):
 	try:
 		with st.spinner("Generating tests..."):
@@ -34,9 +35,12 @@ if st.button(label='Generate Tests'):
 			        html_strings.append(soup.decode_contents())
 		st.success("All html files generated!")
 		st.balloons()
+
+		
+
 	except Exception as e:
 		st.error("Something went wrong!")
 		st.exception(e)
 
-components.html(html_strings[0])
-
+if tests_generated:
+	components.html(html_strings[0])
