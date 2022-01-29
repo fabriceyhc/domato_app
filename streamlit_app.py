@@ -34,7 +34,6 @@ if st.button(label='Generate Tests'):
 			        html_strings.append(soup.decode_contents())
 		st.success("All html files generated!")
 		st.balloons()
-		raise ValueError()
 	except Exception as e:
 		st.error("Something went wrong!")
 		st.exception(e)
