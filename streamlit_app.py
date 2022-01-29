@@ -13,7 +13,7 @@ def increment_html_file_num():
 
 
 def decrement_html_file_num():
-	if st.session_state.html_file_num > 0
+	if st.session_state.html_file_num > 0:
 		st.session_state.html_file_num -= 1
 
 def main():
