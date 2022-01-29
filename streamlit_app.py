@@ -7,10 +7,13 @@ import glob
 
 output_dir = "./domato/test_html_files"
 
-st.text('How many html files would you like to generate with Domato?')
+# app logic
 
+st.title("Fuzzy DOMs with Domato!")
+
+st.text('How many HTML files would you like to generate with Domato?')
 no_of_files = st.number_input(
-	label='Number of html files',
+	label='Number of HTML files',
 	min_value=0,
 	max_value=None,
 	value=10
@@ -33,6 +36,7 @@ if st.button(label='Generate Tests'):
 			    with open(html_file) as fp:
 			        soup = BeautifulSoup(fp, 'html.parser')
 			        html_strings.append(soup.decode_contents())
+		
 		st.success("All html files generated!")
 		st.balloons()
 		tests_generated=True
@@ -43,9 +47,16 @@ if st.button(label='Generate Tests'):
 		st.exception(e)
 
 if tests_generated:
+
+	st.text("Fuzzed HTML Files")
+
 	components.html(
 		html=html_strings[0],
 		width=500,
 		height=500,
 		scrolling=True
 	)
+
+	with st.expander("See HTML Code"):
+		st.code(html_strings[0])
+
