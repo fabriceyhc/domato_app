@@ -43,4 +43,9 @@ if st.button(label='Generate Tests'):
 		st.exception(e)
 
 if tests_generated:
-	components.html(html_strings[0])
+	components.html(
+		html=html_strings[0]
+		width=500,
+		height=500,
+		scrolling=True
+	)
