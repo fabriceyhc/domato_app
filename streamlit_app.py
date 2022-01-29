@@ -44,7 +44,7 @@ if st.button(label='Generate Tests'):
 
 if tests_generated:
 	components.html(
-		html=html_strings[0]
+		html=html_strings[0],
 		width=500,
 		height=500,
 		scrolling=True
