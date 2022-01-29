@@ -35,7 +35,7 @@ if st.button(label='Generate Tests'):
 			        html_strings.append(soup.decode_contents())
 		st.success("All html files generated!")
 		st.balloons()
-
+		tests_generated=True
 		
 
 	except Exception as e:
