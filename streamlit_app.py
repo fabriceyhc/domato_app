@@ -4,6 +4,7 @@ import streamlit.components.v1 as components
 import subprocess as sp
 from bs4 import BeautifulSoup
 import glob
+import shutil
 
 output_dir = "./domato/test_html_files"
 
@@ -47,8 +48,10 @@ def main():
 
     if 'tests_generated' not in st.session_state:
         st.session_state.tests_generated = False
-    
-    if st.button(label='Generate Tests'):
+
+    gen_button = st.button(label='Generate Tests')
+
+    if gen_button:
         try:
             with st.spinner("Generating tests..."):
                 # generate tests
@@ -56,6 +59,8 @@ def main():
                 cmd += ' --output_dir ' + output_dir
                 cmd += ' --no_of_files ' + repr(no_of_files)
                 sp.call(cmd, shell=True)
+
+                shutil.make_archive('domato_test_suite', 'zip', output_dir)
 
                 html_files = glob.glob(output_dir + '**/*.html', recursive=True)
                 if 'html_files' not in st.session_state:
@@ -86,8 +91,10 @@ def main():
                 scrolling=True
             )
         with col2:
-            next_button = st.button('Next', on_click=increment_html_file_num, disabled=disable_next_button())
-            prev_button = st.button('Previous', on_click=decrement_html_file_num, disabled=disable_prev_button())
+            st.button('Next', on_click=increment_html_file_num, disabled=disable_next_button())
+            st.button('Previous', on_click=decrement_html_file_num, disabled=disable_prev_button())
+            with open('./domato/domato_test_suite.zip', 'rb') as f:
+                st.download_button('Download All', f, file_name='domato_test_suite.zip')
 
         with st.expander("See HTML Code"):
             st.download_button(
