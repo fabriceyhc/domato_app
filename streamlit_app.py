@@ -63,13 +63,13 @@ def main():
     custom_grammar = st.checkbox(label="Use custom grammar?")
 
     if custom_grammar:
-        
-        with open('./domato/rules/js.txt') as f:
-            default_grammar = f.read()
 
         custom_grammar_string = st.text_area(
             label="Copy and paste your custom grammar here:",
-            value=default_grammar,
+            value=
+"""<html root=true> = <lt>html<gt><head><body><lt>/html<gt>
+<head> = <lt>head<gt>...<lt>/head<gt>
+<body> = <lt>body<gt>...<lt>/body<gt>""",
             height=100,
             placeholder="Such empty :("
             )
