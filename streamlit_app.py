@@ -49,8 +49,6 @@ def main():
                  and this interface was built by [Fabrice Harel-Canada](https://fabrice.harel-canada.com/) \
                  and Aishwarya Dev for a demo at UCLA's CS 239 (Winter '22) with \
                  Professor [Miryung Kim](https://web.cs.ucla.edu/~miryung/).")
-    st.markdown("By default, we use Domato's grammar rules to generate random HTML pages. \
-                 You may also provide your own [context-free grammar](https://en.wikipedia.org/wiki/Context-free_grammar) instead :) ")
 
     no_of_files = st.number_input(
         label='How many HTML files would you like to generate?',
@@ -59,6 +57,9 @@ def main():
         value=10
         )
     st.session_state.no_of_files = no_of_files
+    
+    st.markdown("By default, we use Domato's grammar rules to generate random HTML pages. \
+                 You may also provide your own [context-free grammar](https://en.wikipedia.org/wiki/Context-free_grammar) instead :) ")
 
     if 'tests_generated' not in st.session_state:
         st.session_state.tests_generated = False
