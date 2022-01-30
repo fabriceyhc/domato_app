@@ -62,7 +62,7 @@ def main():
         st.header("Fuzzed HTML Files")
 
         components.html(
-            html=html_strings[0],
+            html=html_strings[st.session_state.html_file_num],
             width=500,
             height=500,
             scrolling=True
