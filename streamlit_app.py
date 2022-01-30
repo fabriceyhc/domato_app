@@ -37,6 +37,28 @@ def main():
 
     st.title("Fuzzy DOMs with Domato! 🍅")
 
+    custom_grammar = st.checkbox(label="Use custom grammar?")
+
+    if custom_grammar:
+            custom_grammar_string = st.text_area(
+                label="Copy and paste your custom grammar here:"
+                value="""
+                        <html> = <lt>html<gt><head><body><lt>/html<gt>
+                        <head> = <lt>head<gt>...<lt>/head<gt>
+                        <body> = <lt>body<gt>...<lt>/body<gt>
+                    """,
+                height=100,
+                placeholder="Such empty :("
+                )
+            from grammar import Grammar
+            custom_grammar = Grammar()
+
+        try:
+            custom_grammar.parse_from_string(custom_grammar_string)
+        except Exception as e:
+            st.error("Could not parse your grammar file. Please see https://github.com/googleprojectzero/domato for examples of acceptable grammars.")
+            st.exception(e)
+
     no_of_files = st.number_input(
         label='How many HTML files would you like to generate?',
         min_value=0,
@@ -53,23 +75,33 @@ def main():
     if gen_button:
         try:
             with st.spinner("Generating tests..."):
-                # generate tests
-                cmd = 'python domato/generator.py'
-                cmd += ' --output_dir ' + output_dir
-                cmd += ' --no_of_files ' + repr(no_of_files)
-                sp.call(cmd, shell=True)
+                if custom_grammar:
+                    # generate tests with custom grammar
+                    for i in no_of_files:
+                        try:
+                            test_file = custom_grammar.generate_root()
+                        except Exception as e:
+                            st.exception(e)
+                        with open("fuzz-" + repr(i) + ".html","w") as f:
+                            f.write(result_string)
+                else:
+                    # generate tests with default Domato grammar
+                    cmd = 'python domato/generator.py'
+                    cmd += ' --output_dir ' + output_dir
+                    cmd += ' --no_of_files ' + repr(no_of_files)
+                    sp.call(cmd, shell=True)
 
-                shutil.make_archive('domato_test_suite', 'zip', output_dir)
+                    shutil.make_archive('domato_test_suite', 'zip', output_dir)
 
-                html_files = glob.glob(output_dir + '**/*.html', recursive=True)
-                if 'html_files' not in st.session_state:
-                    st.session_state.html_files = html_files
+                    html_files = glob.glob(output_dir + '**/*.html', recursive=True)
+                    if 'html_files' not in st.session_state:
+                        st.session_state.html_files = html_files
 
-            st.success("All html files generated!")
-            # st.balloons()
-            st.session_state.tests_generated = True
-            if 'html_file_num' not in st.session_state:
-                st.session_state.html_file_num = 0
+                st.success("All html files generated!")
+                # st.balloons()
+                st.session_state.tests_generated = True
+                if 'html_file_num' not in st.session_state:
+                    st.session_state.html_file_num = 0
             
         except Exception as e:
             st.error("Something went wrong!")
@@ -81,13 +113,13 @@ def main():
 
         html_string = load_html_file(st.session_state.html_files[st.session_state.html_file_num])
         
-        col1, col2, col3, col4, col5, col6, col7 = st.columns(7)
+        col1, col2, col3, col4, col5 = st.columns(5)
         with col1:
             st.button('Previous', on_click=decrement_html_file_num, disabled=disable_prev_button())
-        with col5:
+        with col3:
             with open('./domato_test_suite.zip', 'rb') as f:
                 st.download_button('Download All', f, file_name='domato_test_suite.zip')
-        with col7:
+        with col5:
             st.button('Next', on_click=increment_html_file_num, disabled=disable_next_button())
 
         components.html(
@@ -102,7 +134,7 @@ def main():
                 label='Download',
                 data=html_string,
                 file_name=st.session_state.html_files[st.session_state.html_file_num]
-            )
+                )
             st.write(st.session_state.html_files[st.session_state.html_file_num])
             st.code(html_string, language='html')
 
