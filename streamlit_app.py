@@ -92,9 +92,13 @@ def main():
 
         with col1:
             st.button('Previous', on_click=decrement_html_file_num, disabled=disable_prev_button())
+        with col2:
+            pass
         with col3:
             with open('./domato_test_suite.zip', 'rb') as f:
                 st.download_button('Download All', f, file_name='domato_test_suite.zip')
+        with col4:
+            pass
         with col5:
             st.button('Next', on_click=increment_html_file_num, disabled=disable_next_button())
 
