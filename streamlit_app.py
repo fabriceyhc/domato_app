@@ -81,7 +81,6 @@ def main():
 
         html_string = load_html_file(st.session_state.html_files[st.session_state.html_file_num])
         
-        col1, col2, col3 = st.columns([3,2,1])
         components.html(
                 html=html_string,
                 # width=600,
@@ -89,6 +88,7 @@ def main():
                 scrolling=True
             )
 
+        col1, col2, col3 = st.columns(3)
         with col1:
             st.button('Previous', on_click=decrement_html_file_num, disabled=disable_prev_button())
         with col2:
