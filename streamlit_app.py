@@ -40,16 +40,16 @@ def main():
     custom_grammar = st.checkbox(label="Use custom grammar?")
 
     if custom_grammar:
-            custom_grammar_string = st.text_area(
-                label="Copy and paste your custom grammar here:",
-                value="""
-                        <html> = <lt>html<gt><head><body><lt>/html<gt>
-                        <head> = <lt>head<gt>...<lt>/head<gt>
-                        <body> = <lt>body<gt>...<lt>/body<gt>
-                    """,
-                height=100,
-                placeholder="Such empty :("
-                )
+        custom_grammar_string = st.text_area(
+            label="Copy and paste your custom grammar here:",
+            value="""
+                    <html> = <lt>html<gt><head><body><lt>/html<gt>
+                    <head> = <lt>head<gt>...<lt>/head<gt>
+                    <body> = <lt>body<gt>...<lt>/body<gt>
+                """,
+            height=100,
+            placeholder="Such empty :("
+            )
         try:
             from grammar import Grammar
             custom_grammar = Grammar()
