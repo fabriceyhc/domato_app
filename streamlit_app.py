@@ -1,10 +1,12 @@
 import streamlit as st
 import streamlit.components.v1 as components
 
-import subprocess as sp
-from bs4 import BeautifulSoup
+import os
 import glob
 import shutil
+
+import subprocess as sp
+from bs4 import BeautifulSoup
 
 from domato.grammar import Grammar
 
@@ -81,9 +83,9 @@ def main():
                             test_file = custom_grammar.generate_root()
                         except Exception as e:
                             st.exception(e)
-
-                        with open("fuzz-" + repr(i) + ".html","w") as f:
-                            f.write(result_string)
+                        output_path = os.path.join(output_dir, "fuzz-" + repr(i) + ".html")
+                        with open(output_path,"w") as f:
+                            f.write(test_file)
                 else:
                     # generate tests with default Domato grammar
                     cmd = 'python domato/generator.py'
