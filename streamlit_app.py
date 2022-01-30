@@ -40,6 +40,17 @@ def load_html_file(path):
 def main():
 
     st.title("Fuzzy DOMs with Domato! 🍅")
+    
+    no_of_files = st.number_input(
+        label='How many HTML files would you like to generate?',
+        min_value=0,
+        max_value=None,
+        value=10
+        )
+    st.session_state.no_of_files = no_of_files
+
+    if 'tests_generated' not in st.session_state:
+        st.session_state.tests_generated = False
 
     custom_grammar = st.checkbox(label="Use custom grammar?")
 
@@ -59,17 +70,6 @@ def main():
         except Exception as e:
             st.error("Could not parse your grammar file. Please see https://github.com/googleprojectzero/domato for examples of acceptable grammars.")
             st.exception(e)
-
-    no_of_files = st.number_input(
-        label='How many HTML files would you like to generate?',
-        min_value=0,
-        max_value=None,
-        value=10
-        )
-    st.session_state.no_of_files = no_of_files
-
-    if 'tests_generated' not in st.session_state:
-        st.session_state.tests_generated = False
 
     gen_button = st.button(label='Generate Tests')
 
