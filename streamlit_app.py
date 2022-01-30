@@ -39,6 +39,9 @@ def load_html_file(path):
 
 def main():
 
+    # environment cleanup and prep
+    shutil.rmtree(output_dir, ignore_errors=True)
+
     st.title("Fuzzy DOMs with Domato! 🍅")
 
     st.markdown("The [Domato](https://github.com/googleprojectzero/domato) tool is designed \
