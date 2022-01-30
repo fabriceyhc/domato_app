@@ -48,11 +48,9 @@ def main():
                  Google's [Project Zero](https://googleprojectzero.blogspot.com/2017/09/the-great-dom-fuzz-off-of-2017.html)\
                  and this interface was built by [Fabrice Harel-Canada](https://fabrice.harel-canada.com/) \
                  and Aishwarya Dev for a demo at UCLA's CS 239 (Winter '22) with \
-                 Professor [Miryung Kim](https://web.cs.ucla.edu/~miryung/). \
-                 \
-                 By default, we use Domato's grammar rules to generate random HTML pages. \
-                 You may also provide your own grammar below :) \
-                 ")
+                 Professor [Miryung Kim](https://web.cs.ucla.edu/~miryung/).")
+    st.markdown("By default, we use Domato's grammar rules to generate random HTML pages. \
+                 You may also provide your own [context-free grammar](https://en.wikipedia.org/wiki/Context-free_grammar) instead :) ")
 
     no_of_files = st.number_input(
         label='How many HTML files would you like to generate?',
