@@ -68,10 +68,13 @@ def main():
             label="Copy and paste your custom grammar here:",
             value=
 """<html root=true> = <lt>html<gt><head><body><lt>/html<gt>
-<head> = <lt>head<gt><exclamation><lt>/head<gt>
-<body> = <lt>body<gt>...<lt>/body<gt>
-<exclamation> = Wow!
-<exclamation> = Jeepers!""",
+<head> = <lt>head<gt>...<lt>/head<gt>
+<body> = <lt>body<gt><h1><exclamation><lt>/body<gt>
+<h1> = <lt>h1<gt><title><lt>/h1<gt>
+<title> = New phone, who dis?
+<title> = The other title:
+<exclamation> = Whoa!
+<exclamation> = Yoooooo!""",
             height=100,
             placeholder="Such empty :("
             )
