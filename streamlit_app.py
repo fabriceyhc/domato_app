@@ -92,7 +92,8 @@ def main():
         # environment cleanup and prep
         shutil.rmtree(output_dir, ignore_errors=True)
         os.makedirs(output_dir, exist_ok=True)
-
+        st.session_state.html_file_num = 0
+        
         try:
             with st.spinner("Generating tests..."):
                 if custom_grammar:
