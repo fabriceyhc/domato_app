@@ -91,7 +91,7 @@ def main():
                             test_file = custom_grammar.generate_root()
                         except Exception as e:
                             st.exception(e)
-                        output_path = os.path.join(output_dir, "fuzz-" + repr(i) + ".html")
+                        output_path = os.path.join(output_dir, "fuzz-" + str(i).zfill(5) + ".html")
                         with open(output_path,"w") as f:
                             f.write(test_file)
                 else:
