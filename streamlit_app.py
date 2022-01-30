@@ -11,10 +11,14 @@ def increment_html_file_num():
     if st.session_state.html_file_num < st.session_state.no_of_files:
         st.session_state.html_file_num += 1
 
-
 def decrement_html_file_num():
     if st.session_state.html_file_num > 0:
         st.session_state.html_file_num -= 1
+
+def load_html_file(path):
+    with open(path) as fp:
+        soup = BeautifulSoup(fp, 'html.parser')
+    return soup.decode_contents()
 
 def main():
 
@@ -42,13 +46,9 @@ def main():
                 sp.call(cmd, shell=True)
 
                 html_files = glob.glob(output_dir + '**/*.html', recursive=True)
+                if 'html_files' not in st.session_state:
+                    st.session_state.html_files = html_files
 
-                html_strings = []
-                for html_file in html_files:
-                    with open(html_file) as fp:
-                        soup = BeautifulSoup(fp, 'html.parser')
-                        html_strings.append(soup.decode_contents())
-            
             st.success("All html files generated!")
             st.balloons()
             st.session_state.tests_generated = True
@@ -64,7 +64,8 @@ def main():
         st.header("Fuzzed HTML Files")
 
         components.html(
-            html=html_strings[st.session_state.html_file_num],
+            html=load_html_file(
+                st.session_state.html_files[st.session_state.html_file_num]),
             width=500,
             height=500,
             scrolling=True
