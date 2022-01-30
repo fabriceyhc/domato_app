@@ -47,9 +47,6 @@ def main():
     if 'html_file_num' in st.session_state:
         st.session_state.html_file_num = 0
 
-    st.write(st.session_state.html_file_num)
-    st.write(st.session_state.html_files)
-
     st.title("Fuzzy DOMs with Domato! 🍅")
 
     st.markdown("The [Domato](https://github.com/googleprojectzero/domato) tool is designed \
@@ -143,6 +140,9 @@ def main():
                 st.download_button('Download All', f, file_name='domato_test_suite.zip')
         with col5:
             st.button('Next', on_click=increment_html_file_num, disabled=disable_next_button())
+
+        st.write(st.session_state.html_file_num)
+        st.write(st.session_state.html_files)
 
         components.html(
                 html=html_string,
