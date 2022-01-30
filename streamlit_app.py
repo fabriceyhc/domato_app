@@ -66,11 +66,11 @@ def main():
         html_string = load_html_file(st.session_state.html_files[st.session_state.html_file_num])
         
 
-        col1, col2 = st.columns([7, 1])
+        col1, col2 = st.columns([10, 1])
         with col1:
             components.html(
                 html=html_string,
-                width=500,
+                width=800,
                 height=500,
                 scrolling=True
             )
