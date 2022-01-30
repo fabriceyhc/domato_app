@@ -67,9 +67,6 @@ def main():
             height=500,
             scrolling=True
         )
-        st.button('Next', on_click=increment_html_file_num)
-        st.button('Previous', on_click=decrement_html_file_num)
-
         with st.expander("See HTML Code"):
             st.download_button(
                 label='Download',
@@ -77,6 +74,13 @@ def main():
                 file_name=html_files[st.session_state.html_file_num]
             )
             st.code(html_strings[st.session_state.html_file_num])
+
+        col1, col2 = st.columns(2)
+
+        with col1:
+            st.button('Next', on_click=increment_html_file_num)
+        with col2:
+            st.button('Previous', on_click=decrement_html_file_num)
 
 if __name__ == '__main__':
     main()
