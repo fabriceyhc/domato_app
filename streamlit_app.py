@@ -63,9 +63,9 @@ def main():
 
         st.header("Fuzzed HTML Files")
 
+        html_string = load_html_file(st.session_state.html_files[st.session_state.html_file_num])
         components.html(
-            html=load_html_file(
-                st.session_state.html_files[st.session_state.html_file_num]),
+            html=html_string,
             width=500,
             height=500,
             scrolling=True
@@ -73,10 +73,10 @@ def main():
         with st.expander("See HTML Code"):
             st.download_button(
                 label='Download',
-                data=html_strings[st.session_state.html_file_num],
-                file_name=html_files[st.session_state.html_file_num]
+                data=html_string,
+                file_name=st.session_state.html_files[st.session_state.html_file_num]
             )
-            st.code(html_strings[st.session_state.html_file_num])
+            st.code(st.session_state.html_files[st.session_state.html_file_num])
 
         col1, col2 = st.columns(2)
 
