@@ -8,7 +8,7 @@ import glob
 output_dir = "./domato/test_html_files"
 
 def increment_html_file_num():
-    if st.session_state.html_file_num < st.session_state.no_of_files:
+    if st.session_state.html_file_num < st.session_state.no_of_files-1:
         st.session_state.html_file_num += 1
 
 def decrement_html_file_num():
@@ -70,8 +70,8 @@ def main():
         with col1:
             components.html(
                 html=html_string,
-                width=800,
-                height=500,
+                width=600,
+                height=400,
                 scrolling=True
             )
         with col2:
