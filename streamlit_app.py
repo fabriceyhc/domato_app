@@ -163,5 +163,7 @@ def main():
             st.write(st.session_state.html_files[st.session_state.html_file_num])
             st.code(html_string, language='html')
 
+        st.info('Note: rendering the fuzzed html files may make the page unstable! Refresh if necessary.')
+
 if __name__ == '__main__':
     main()
