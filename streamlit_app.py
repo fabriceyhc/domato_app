@@ -76,7 +76,7 @@ def main():
             with st.spinner("Generating tests..."):
                 if custom_grammar:
                     # generate tests with custom grammar
-                    for i in no_of_files:
+                    for i in range(no_of_files):
                         try:
                             test_file = custom_grammar.generate_root()
                         except Exception as e:
