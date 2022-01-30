@@ -134,9 +134,6 @@ def main():
         with col5:
             st.button('Next', on_click=increment_html_file_num, disabled=disable_next_button())
 
-        st.write(st.session_state.html_file_num)
-        st.write(st.session_state.html_files)
-
         components.html(
                 html=html_string,
                 # width=600,
