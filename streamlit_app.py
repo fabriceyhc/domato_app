@@ -63,12 +63,13 @@ def main():
     custom_grammar = st.checkbox(label="Use custom grammar?")
 
     if custom_grammar:
+        
+        with open('./domato/rules/js.txt') as f:
+            default_grammar = f.read()
+
         custom_grammar_string = st.text_area(
             label="Copy and paste your custom grammar here:",
-            value=
-"""<html> = <lt>html<gt><head><body><lt>/html<gt>
-<head> = <lt>head<gt>...<lt>/head<gt>
-<body> = <lt>body<gt>...<lt>/body<gt>""",
+            value=default_grammar,
             height=100,
             placeholder="Such empty :("
             )
@@ -86,7 +87,7 @@ def main():
         # environment cleanup and prep
         shutil.rmtree(output_dir, ignore_errors=True)
         os.makedirs(output_dir, exist_ok=True)
-        
+
         try:
             with st.spinner("Generating tests..."):
                 if custom_grammar:
