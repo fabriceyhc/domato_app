@@ -60,7 +60,7 @@ def main():
                 cmd += ' --no_of_files ' + repr(no_of_files)
                 sp.call(cmd, shell=True)
 
-                shutil.make_archive('domato_test_suite', 'zip', '.')
+                shutil.make_archive('domato_test_suite', 'zip', output_dir)
 
                 html_files = glob.glob(output_dir + '**/*.html', recursive=True)
                 if 'html_files' not in st.session_state:
@@ -82,7 +82,7 @@ def main():
 
         html_string = load_html_file(st.session_state.html_files[st.session_state.html_file_num])
         
-        col1, col2 = st.columns([10, 1])
+        col1, col2 = st.columns([7, 1])
         with col1:
             components.html(
                 html=html_string,
