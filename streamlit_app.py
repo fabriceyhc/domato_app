@@ -104,6 +104,7 @@ def main():
                 shutil.make_archive('domato_test_suite', 'zip', output_dir)
 
             html_files = glob.glob(output_dir + '**/*.html', recursive=True)
+            print(html_files)
             if 'html_files' not in st.session_state:
                 st.session_state.html_files = html_files
 
