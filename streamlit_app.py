@@ -50,7 +50,7 @@ def main():
                     st.session_state.html_files = html_files
 
             st.success("All html files generated!")
-            st.balloons()
+            # st.balloons()
             st.session_state.tests_generated = True
             if 'html_file_num' not in st.session_state:
                 st.session_state.html_file_num = 0
