@@ -50,9 +50,9 @@ def main():
                 height=100,
                 placeholder="Such empty :("
                 )
+        try:
             from grammar import Grammar
             custom_grammar = Grammar()
-        try:
             custom_grammar.parse_from_string(custom_grammar_string)
         except Exception as e:
             st.error("Could not parse your grammar file. Please see https://github.com/googleprojectzero/domato for examples of acceptable grammars.")
