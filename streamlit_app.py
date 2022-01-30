@@ -35,11 +35,10 @@ def load_html_file(path):
 
 def main():
 
-    st.title("Fuzzy DOMs with Domato!")
+    st.title("Fuzzy DOMs with Domato! 🍅")
 
-    st.text('How many HTML files would you like to generate?')
     no_of_files = st.number_input(
-        label='Number of HTML files',
+        label='How many HTML files would you like to generate?',
         min_value=0,
         max_value=None,
         value=10
