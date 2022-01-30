@@ -10,10 +10,14 @@ output_dir = "./domato/test_html_files"
 def increment_html_file_num():
     if st.session_state.html_file_num < st.session_state.no_of_files-1:
         st.session_state.html_file_num += 1
+    else:
+        next_button.disabled = True
 
 def decrement_html_file_num():
     if st.session_state.html_file_num > 0:
         st.session_state.html_file_num -= 1
+    else:
+        prev_button.disabled = True
 
 def load_html_file(path):
     with open(path) as fp:
@@ -74,8 +78,8 @@ def main():
                 scrolling=True
             )
         with col2:
-            st.button('Next', on_click=increment_html_file_num)
-            st.button('Previous', on_click=decrement_html_file_num)
+            next_button = st.button('Next', on_click=increment_html_file_num)
+            prev_button = st.button('Previous', on_click=decrement_html_file_num)
 
         with st.expander("See HTML Code"):
             st.download_button(
@@ -85,8 +89,6 @@ def main():
             )
             st.write(st.session_state.html_files[st.session_state.html_file_num])
             st.code(html_string, language='html')
-
-        st.write(st.session_state.html_file_num)
 
 if __name__ == '__main__':
     main()
