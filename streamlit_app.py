@@ -47,7 +47,8 @@ def main():
     if 'html_file_num' in st.session_state:
         st.session_state.html_file_num = 0
 
-    st.write(st.session_state)
+    st.write(st.session_state.html_file_num)
+    st.write(st.session_state.html_files)
 
     st.title("Fuzzy DOMs with Domato! 🍅")
 
