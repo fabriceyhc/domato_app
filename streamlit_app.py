@@ -41,7 +41,7 @@ def main():
 
     if custom_grammar:
             custom_grammar_string = st.text_area(
-                label="Copy and paste your custom grammar here:"
+                label="Copy and paste your custom grammar here:",
                 value="""
                         <html> = <lt>html<gt><head><body><lt>/html<gt>
                         <head> = <lt>head<gt>...<lt>/head<gt>
