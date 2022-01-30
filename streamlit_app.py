@@ -63,8 +63,10 @@ def main():
 
     custom_grammar = st.checkbox(
         label="Use custom grammar?",
-        help="By default, we use Domato's grammar rules to generate random HTML pages. \
-                 You may also provide your own [context-free grammar](https://en.wikipedia.org/wiki/Context-free_grammar) instead :)"
+        help="By default, we use Domato's grammar rules to generate random HTML files. \
+                 You may also provide your own [context-free grammar](https://en.wikipedia.org/wiki/Context-free_grammar) \
+                 instead. Please see Domato's README for basic syntax, reserved symbols, attributes, and other information \
+                 when constructing your own grammar."
         )
 
     if custom_grammar:
