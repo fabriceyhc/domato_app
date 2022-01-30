@@ -134,7 +134,6 @@ def main():
     if st.session_state.tests_generated:
 
         st.header("Fuzzed HTML Files")
-        st.info('Note: rendering the fuzzed HTML files may make the page unstable! Refresh if necessary.')
         st.write("Viewing " + st.session_state.html_files[st.session_state.html_file_num])
 
         html_string = load_html_file(st.session_state.html_files[st.session_state.html_file_num])
@@ -163,6 +162,8 @@ def main():
                 )
             st.write(st.session_state.html_files[st.session_state.html_file_num])
             st.code(html_string, language='html')
+
+        st.info('NOTE: Rendering the fuzzed HTML may make the page unstable due to wonky JS! Refresh if necessary.')
 
 if __name__ == '__main__':
     main()
