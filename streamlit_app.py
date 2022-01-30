@@ -20,7 +20,7 @@ def main():
 
     st.title("Fuzzy DOMs with Domato!")
 
-    st.text('How many HTML files would you like to generate with Domato?')
+    st.text('How many HTML files would you like to generate?')
     no_of_files = st.number_input(
         label='Number of HTML files',
         min_value=0,
@@ -77,10 +77,10 @@ def main():
 
         col1, col2 = st.columns(2)
 
-        with col1:
-            st.button('Next', on_click=increment_html_file_num)
-        with col2:
-            st.button('Previous', on_click=decrement_html_file_num)
+        col1.button('Next', on_click=increment_html_file_num)
+        col2.button('Previous', on_click=decrement_html_file_num)
+
+        st.write(st.session_state.html_file_num)
 
 if __name__ == '__main__':
     main()
