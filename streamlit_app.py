@@ -84,7 +84,7 @@ def main():
                 file_name=st.session_state.html_files[st.session_state.html_file_num]
             )
             st.write(st.session_state.html_files[st.session_state.html_file_num])
-            st.code(html_string)
+            st.code(html_string, language='html')
 
         st.write(st.session_state.html_file_num)
 
