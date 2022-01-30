@@ -6,6 +6,8 @@ from bs4 import BeautifulSoup
 import glob
 import shutil
 
+from domato.grammar import Grammar
+
 output_dir = "./domato/test_html_files"
 
 def increment_html_file_num():
@@ -51,7 +53,6 @@ def main():
             placeholder="Such empty :("
             )
         try:
-            from grammar import Grammar
             custom_grammar = Grammar()
             custom_grammar.parse_from_string(custom_grammar_string)
         except Exception as e:
