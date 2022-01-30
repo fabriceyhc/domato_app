@@ -57,14 +57,15 @@ def main():
         value=10
         )
     st.session_state.no_of_files = no_of_files
-    
-    st.markdown("By default, we use Domato's grammar rules to generate random HTML pages. \
-                 You may also provide your own [context-free grammar](https://en.wikipedia.org/wiki/Context-free_grammar) instead :) ")
 
     if 'tests_generated' not in st.session_state:
         st.session_state.tests_generated = False
 
-    custom_grammar = st.checkbox(label="Use custom grammar?")
+    custom_grammar = st.checkbox(
+        label="Use custom grammar?",
+        help="By default, we use Domato's grammar rules to generate random HTML pages. \
+                 You may also provide your own [context-free grammar](https://en.wikipedia.org/wiki/Context-free_grammar) instead :)"
+        )
 
     if custom_grammar:
 
