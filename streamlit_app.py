@@ -42,10 +42,6 @@ def main():
     # environment cleanup and prep
     shutil.rmtree(output_dir, ignore_errors=True)
     os.makedirs(output_dir, exist_ok=True)
-    if 'html_files' in st.session_state:
-        st.session_state.html_files = []
-    if 'html_file_num' in st.session_state:
-        st.session_state.html_file_num = 0
 
     st.title("Fuzzy DOMs with Domato! 🍅")
 
@@ -112,6 +108,7 @@ def main():
                 shutil.make_archive('domato_test_suite', 'zip', output_dir)
 
             html_files = glob.glob(output_dir + '**/*.html', recursive=True)
+            html_files.sort()
             if 'html_files' not in st.session_state:
                 st.session_state.html_files = html_files
 
