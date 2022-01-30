@@ -60,7 +60,7 @@ def main():
                 cmd += ' --no_of_files ' + repr(no_of_files)
                 sp.call(cmd, shell=True)
 
-                shutil.make_archive('domato_test_suite', 'zip', './domato')
+                shutil.make_archive('domato_test_suite', 'zip', './domato/')
 
                 html_files = glob.glob(output_dir + '**/*.html', recursive=True)
                 if 'html_files' not in st.session_state:
