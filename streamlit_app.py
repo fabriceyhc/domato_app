@@ -131,7 +131,7 @@ def main():
                 scrolling=True
             )
 
-        with st.expander("See HTML Code"):
+        with st.expander("See the code..."):
             st.download_button(
                 label='Download',
                 data=html_string,
