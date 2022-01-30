@@ -10,12 +10,14 @@ output_dir = "./domato/test_html_files"
 def increment_html_file_num():
     if st.session_state.html_file_num < st.session_state.no_of_files-1:
         st.session_state.html_file_num += 1
+        next_button.disabled = False
     else:
         next_button.disabled = True
 
 def decrement_html_file_num():
     if st.session_state.html_file_num > 0:
         st.session_state.html_file_num -= 1
+        prev_button.disabled = False
     else:
         prev_button.disabled = True
 
