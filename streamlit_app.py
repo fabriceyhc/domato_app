@@ -93,17 +93,17 @@ def main():
                     cmd += ' --no_of_files ' + repr(no_of_files)
                     sp.call(cmd, shell=True)
 
-                    shutil.make_archive('domato_test_suite', 'zip', output_dir)
+                shutil.make_archive('domato_test_suite', 'zip', output_dir)
 
-                    html_files = glob.glob(output_dir + '**/*.html', recursive=True)
-                    if 'html_files' not in st.session_state:
-                        st.session_state.html_files = html_files
+            html_files = glob.glob(output_dir + '**/*.html', recursive=True)
+            if 'html_files' not in st.session_state:
+                st.session_state.html_files = html_files
 
-                st.success("All html files generated!")
-                # st.balloons()
-                st.session_state.tests_generated = True
-                if 'html_file_num' not in st.session_state:
-                    st.session_state.html_file_num = 0
+            st.success("All html files generated!")
+            # st.balloons()
+            st.session_state.tests_generated = True
+            if 'html_file_num' not in st.session_state:
+                st.session_state.html_file_num = 0
             
         except Exception as e:
             st.error("Something went wrong!")
