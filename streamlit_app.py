@@ -47,6 +47,8 @@ def main():
     if 'html_file_num' in st.session_state:
         st.session_state.html_file_num = 0
 
+    st.write(st.session_state)
+
     st.title("Fuzzy DOMs with Domato! 🍅")
 
     st.markdown("The [Domato](https://github.com/googleprojectzero/domato) tool is designed \
