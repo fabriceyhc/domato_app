@@ -120,6 +120,7 @@ def main():
     if st.session_state.tests_generated:
 
         st.header("Fuzzed HTML Files")
+        st.write("Viewing " + st.session_state.html_files[st.session_state.html_file_num])
 
         html_string = load_html_file(st.session_state.html_files[st.session_state.html_file_num])
         
