@@ -47,7 +47,7 @@ def main():
                  It was originally developed by [Ivan Fratric](http://ifsec.blogspot.com/) of \
                  Google's [Project Zero](https://googleprojectzero.blogspot.com/2017/09/the-great-dom-fuzz-off-of-2017.html)\
                  and this interface was built by [Fabrice Harel-Canada](https://fabrice.harel-canada.com/) \
-                 and Aishwarya Dev for a demo at UCLA CS 239 (Winter '22) with \
+                 and Aishwarya Dev for a demo at UCLA's CS 239 (Winter '22) with \
                  Professor [Miryung Kim](https://web.cs.ucla.edu/~miryung/).")
 
     no_of_files = st.number_input(
