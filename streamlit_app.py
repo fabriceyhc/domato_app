@@ -41,10 +41,11 @@ def main():
 
     st.title("Fuzzy DOMs with Domato! 🍅")
 
-    st.markdown("The Domato tool is designed to jointly generate files with HTML, CSS, and JavaScript \
+    st.markdown("The [Domato](https://github.com/googleprojectzero/domato) tool is designed \
+                 to jointly generate files with HTML, CSS, and JavaScript \
                  for fuzz testing DOMs in browsers like Chrome, Firefox, Safari, and Edge. \
                  It was originally developed by Ivan Fratric of Google's [Project Zero](https://googleprojectzero.blogspot.com/2017/09/the-great-dom-fuzz-off-of-2017.html)\
-                 and this interface was built by Fabrice Harel-Canada and Aishwarya Dev for a \
+                 and this interface was built by [Fabrice Harel-Canada](https://fabrice.harel-canada.com/) and Aishwarya Dev for a \
                  demo at UCLA CS 239 (Winter '22) with Professor Miryung Kim.\
                  ")
 
