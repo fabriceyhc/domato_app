@@ -85,7 +85,7 @@ def main():
         col1, col2, col3, col4, col5 = st.columns(5)
         components.html(
                 html=html_string,
-                width=600,
+                # width=600,
                 height=400,
                 scrolling=True
             )
