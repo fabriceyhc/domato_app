@@ -29,7 +29,9 @@ def main():
         )
     st.session_state.no_of_files = no_of_files
 
-    tests_generated = False
+    if 'tests_generated' not in st.session_state:
+        st.session_state.tests_generated = False
+    
     if st.button(label='Generate Tests'):
         try:
             with st.spinner("Generating tests..."):
@@ -49,7 +51,7 @@ def main():
             
             st.success("All html files generated!")
             st.balloons()
-            tests_generated=True
+            st.session_state.tests_generated = True
             if 'html_file_num' not in st.session_state:
                 st.session_state.html_file_num = 0
             
@@ -57,7 +59,7 @@ def main():
             st.error("Something went wrong!")
             st.exception(e)
 
-    if tests_generated:
+    if st.session_state.tests_generated:
 
         st.header("Fuzzed HTML Files")
 
