@@ -81,13 +81,13 @@ def main():
 
         html_string = load_html_file(st.session_state.html_files[st.session_state.html_file_num])
         
-        col1, col2, col3, col4, col5 = st.columns(5)
+        col1, col2, col3, col4, col5, col6, col7 = st.columns(7)
         with col1:
             st.button('Previous', on_click=decrement_html_file_num, disabled=disable_prev_button())
-        with col3:
+        with col5:
             with open('./domato_test_suite.zip', 'rb') as f:
                 st.download_button('Download All', f, file_name='domato_test_suite.zip')
-        with col5:
+        with col7:
             st.button('Next', on_click=increment_html_file_num, disabled=disable_next_button())
 
         components.html(
