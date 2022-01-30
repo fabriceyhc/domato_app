@@ -65,7 +65,6 @@ def main():
 
         html_string = load_html_file(st.session_state.html_files[st.session_state.html_file_num])
         
-
         col1, col2 = st.columns([10, 1])
         with col1:
             components.html(
@@ -84,7 +83,8 @@ def main():
                 data=html_string,
                 file_name=st.session_state.html_files[st.session_state.html_file_num]
             )
-            st.code(st.session_state.html_files[st.session_state.html_file_num])
+            st.write(st.session_state.html_files[st.session_state.html_file_num])
+            st.code(html_string)
 
         st.write(st.session_state.html_file_num)
 
