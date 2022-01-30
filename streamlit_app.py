@@ -41,7 +41,7 @@ def main():
 
     if custom_grammar:
             custom_grammar_string = st.text_area(
-                label="Copy and paste your custom grammar here:",
+                label="Copy and paste your custom grammar here:"
                 value="""
                         <html> = <lt>html<gt><head><body><lt>/html<gt>
                         <head> = <lt>head<gt>...<lt>/head<gt>
@@ -52,7 +52,6 @@ def main():
                 )
             from grammar import Grammar
             custom_grammar = Grammar()
-
         try:
             custom_grammar.parse_from_string(custom_grammar_string)
         except Exception as e:
@@ -82,6 +81,7 @@ def main():
                             test_file = custom_grammar.generate_root()
                         except Exception as e:
                             st.exception(e)
+
                         with open("fuzz-" + repr(i) + ".html","w") as f:
                             f.write(result_string)
                 else:
